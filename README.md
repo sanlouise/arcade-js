@@ -1,6 +1,5 @@
-frontend-nanodegree-arcade-game
-===============================
+## Arcade Game
 
-Students should use this [rubric](https://www.udacity.com/course/viewer/#!/c-nd001/l-2696458597/m-2687128535) for self-checking their submission.
+This is a reproduction of the 'Frogger' game. The development of this project was part of Udacity's Object-Oriented Javascript Course. 
 
-For detailed instructions on how to get started, check out this [guide](https://docs.google.com/document/d/1v01aScPjSWCCWQLIpFqvg3-vXLH2e8_SZQKC8jNO0Dc/pub?embedded=true).
+No special installations are needed and the game should render in any browser.
