@@ -1,34 +1,26 @@
-
-// Enemy Class
-var Enemy = function() {
-    //Loading the image by setting this.sprite to the appropriate image in the image folder
-    this.sprite = 'images/enemy-bug.png';
+var Enemy = function(x, y, speed) {
     this.x = x;
     this.y = y;
-    // Add random speed to the enemy bugs.
-    this.speed = Math.floor((Math.random() * 200) + 50);
+    this.speed = speed;
+    this.sprite = 'images/enemy-bug.png';
 };
+
+var bug1 = new Enemy(100,62,80);
+var bug2 = new Enemy(350,150,130);
+var bug3 = new Enemy(450,230,200);
 
 Enemy.prototype.update = function(dt) {
-    //Once the bug leaves the screen, the object will be reset.
-    if(this.x <= 505){
-        this.x += this.speed * dt;
-    }else{
-        this.x = -2;
-    };
-
-    //Handles collision with the Player
-    if(player.x >= this.x - 25 && player.x <= this.x + 25){
-        if(player.y >= this.y - 25 && player.y <= this.y + 25){
-            this.reset();
-        }
-    };
+    if (this.x <= 505) {
+    this.x += this.speed * dt;
+    } else {
+    this.x = -101;
+    }
 };
 
+// Draw the enemy on the screen, required method for game
 Enemy.prototype.render = function() {
-  ctx.drawImage(Resources.get(this.sprite), this.x, this.y);
+    ctx.drawImage(Resources.get(this.sprite), this.x, this.y);
 };
-
 
 //Player Class
 var Player = function(){
@@ -51,6 +43,7 @@ Player.prototype.update = function(){
     }else if (this.ctlKey === 'down' && this.y != 400){
         this.y = this.y + 50;
     }
+    //This ensures that the player does go bounce around the screen.
     this.ctlKey = null;
     
     //Reset when the player touches the water.
@@ -74,16 +67,8 @@ Player.prototype.reset = function() {
   player.y = 400;
 };
 
-// Instantiation of objects.
+var allEnemies = [bug1, bug2, bug3];
 var player = new Player(); 
-var allEnemies = [];
-
-function addEnemies(){
-    allEnemies.push(new Enemy(-2, 60));
-    allEnemies.push(new Enemy(-2, 100));
-    allEnemies.push(new Enemy(-2,150));
-    allEnemies.push(new Enemy(-2,220));
-};
 
 
 // This listens for key presses and sends the keys to your
