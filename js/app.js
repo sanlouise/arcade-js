@@ -15,14 +15,14 @@ Enemy.prototype.update = function(dt) {
         this.x += this.speed * dt;
     }else{
         this.x = -2;
-    }
+    };
 
     //Handles collision with the Player
     if(player.x >= this.x - 25 && player.x <= this.x + 25){
         if(player.y >= this.y - 25 && player.y <= this.y + 25){
             this.reset();
         }
-    }
+    };
 };
 
 Enemy.prototype.render = function() {
@@ -84,8 +84,6 @@ function addEnemies(){
     allEnemies.push(new Enemy(-2,150));
     allEnemies.push(new Enemy(-2,220));
 };
-
-addEnemies();
 
 
 // This listens for key presses and sends the keys to your
