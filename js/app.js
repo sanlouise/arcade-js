@@ -1,7 +1,7 @@
 var Enemy = function(x, y, speed) {
     this.x = x;
     this.y = y;
-    this.speed = Math.floor(Math.random() * 120 + 8);
+    this.speed = Math.floor(Math.random() * 120 + 15);
     this.sprite = 'images/enemy-bug.png';
 };
 
