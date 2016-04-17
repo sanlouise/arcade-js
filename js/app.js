@@ -5,6 +5,13 @@ var Enemy = function(x, y, speed) {
     this.sprite = 'images/enemy-bug.png';
 };
 
+//Player Class
+var Player = function(){
+    this.sprite = 'images/char-boy.png';
+    this.x = 200;
+    this.y = 400;
+};
+
 var bug1 = new Enemy(100,62,80);
 var bug2 = new Enemy(350,150,130);
 var bug3 = new Enemy(450,230,200);
@@ -19,7 +26,8 @@ Enemy.prototype.update = function(dt) {
     //Handles collision with the Player
     if(player.x >= this.x - 25 && player.x <= this.x + 25){
         if(player.y >= this.y - 25 && player.y <= this.y + 25){
-            Player.reset();
+            console.log("Hit!")
+            player.reset();
         }
     }
 };        
@@ -28,12 +36,6 @@ Enemy.prototype.render = function() {
     ctx.drawImage(Resources.get(this.sprite), this.x, this.y);
 };
 
-//Player Class
-var Player = function(){
-    this.sprite = 'images/char-boy.png';
-    this.x = 200;
-    this.y = 400;
-};
 
 Player.prototype.update = function(){
 
