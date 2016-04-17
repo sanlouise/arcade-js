@@ -1,7 +1,7 @@
 var Enemy = function(x, y, speed) {
     this.x = x;
     this.y = y;
-    this.speed = speed;
+    this.speed = Math.floor(Math.random() * 120 + 8);
     this.sprite = 'images/enemy-bug.png';
 };
 
@@ -10,13 +10,19 @@ var bug2 = new Enemy(350,150,130);
 var bug3 = new Enemy(450,230,200);
 
 Enemy.prototype.update = function(dt) {
-    if (this.x <= 505) {
-    this.x += this.speed * dt;
+    if(this.x <= 505){
+        this.x += this.speed * dt;
     } else {
-    this.x = -101;
+        this.x = -2;
     }
-};
 
+    //Handles collision with the Player
+    if(player.x >= this.x - 25 && player.x <= this.x + 25){
+        if(player.y >= this.y - 25 && player.y <= this.y + 25){
+            Player.reset();
+        }
+    }
+};        
 // Draw the enemy on the screen, required method for game
 Enemy.prototype.render = function() {
     ctx.drawImage(Resources.get(this.sprite), this.x, this.y);
